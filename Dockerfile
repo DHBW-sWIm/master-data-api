@@ -1,6 +1,7 @@
 # installing node version 10
 FROM node:12
 
+#assign wirking directory
 WORKDIR /usr/src/app
 
 # copy all package* from the 
@@ -12,7 +13,7 @@ COPY . .
 
 EXPOSE 8080
 
-ENV url=default
+ENV URL=default
 
-CMD ["node", "server.js"]
+CMD ["node", "api/server.js"]
 
