@@ -13,5 +13,11 @@ router.get('/test', function(req, res) {
 });
 
 
+router.get('/testAlex', function(req, res) {
+    console.log("ROUTER GET /testAlex");
+    testAlexController.test(req, res);
+});
+
+
 //EXPORT MODULE
 module.exports = router;
