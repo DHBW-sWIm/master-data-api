@@ -1,5 +1,6 @@
-const express = require("express");
+//const express = require("express");
+const testUserController = require("./test-service");
 
 exports.testFunction = function(req, res) {
-    res.status(200).json({ message: 'hooray! welcome to our api! it works' });
+    testUserController.test(req, res);
 }
