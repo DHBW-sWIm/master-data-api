@@ -5,7 +5,8 @@ const pool = mariadb.createPool({
      user: "bn_moodle", 
      password: "swim-access",
      database: "bitnami_moodle",
-     connectionLimit: 5
+     connectionLimit: 5,
+     acquireTimeout: 10000
 });
 
 exports.testAlex = function(data, callback) {
