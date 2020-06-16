@@ -6,6 +6,7 @@ var router = express.Router();
 // define the modules we need
 const testUserController = require("./test-user-controller");
 const testAlexController = require("./Controllers/test");
+const testTillmanController = require("./Controllers/test-tillman-controller")
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api/test)
 router.get('/test', function(req, res) {
@@ -17,6 +18,11 @@ router.get('/testAlex', function(req, res) {
     console.log("ROUTER GET /testAlex");
     testAlexController.test(req, res);
 });
+
+router.get('/testTillman', function(req, res) {
+    console.log('ROUTER GET /testTillman');
+    testTillmanController.test(req, res)
+})
 
 
 //EXPORT MODULE

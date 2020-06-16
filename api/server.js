@@ -14,7 +14,7 @@ const router        = require("./router");      // call router and import the ro
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;        // set our port => if there is no port set use 8080 as default
+var port = process.env.PORT || 9090;        // set our port => if there is no port set use 8080 as default
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
