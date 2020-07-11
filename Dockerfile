@@ -13,7 +13,6 @@ COPY . .
 
 EXPOSE 9090
 
-ENV URL=default
+ENV PORT=9090
 
-CMD ["node", "api/server.js"]
-
+CMD ["npm", "run", "start"]
