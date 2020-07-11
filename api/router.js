@@ -2,6 +2,9 @@
 const express = require("express");
 const router = express.Router();
 
+// define middlewares
+const auth = require("./middleware/authentication");
+
 // define the modules we need
 const testUserController = require("./test-user-controller");
 const testAlexController = require("./Controllers/test");
