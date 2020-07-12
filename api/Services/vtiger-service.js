@@ -1,12 +1,12 @@
 const mariadb = require('mariadb');
 
-const pool = mariadb.createPool({
+/* const pool = mariadb.createPool({
      host: "127.0.0.1:3306",
      user: "root", 
      password: "vtiger",
      connectionLimit: 5,
      acquireTimeout: 10000
-});
+}); */
 
 exports.testTillman = function(data, callback) {
 

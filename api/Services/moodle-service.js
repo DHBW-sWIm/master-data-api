@@ -1,6 +1,6 @@
 const mariadb = require('mariadb');
 
-const pool = mariadb.createPool({
+/* const pool = mariadb.createPool({
      host: "adminer.md.swimdhbw.de",
      user: "bn_moodle", 
      password: "swim-access",
@@ -8,7 +8,7 @@ const pool = mariadb.createPool({
      connectionLimit: 5,
      acquireTimeout: 10000
 });
-
+ */
 exports.testAlex = function(data, callback) {
 
      console.log("MoodleService testAlex called");
