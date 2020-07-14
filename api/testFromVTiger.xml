@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document>
+ <Entry>
+ <Method>INSERT</Method>
+ <CompanyName>Name 1</CompanyName>
+ <CompanyAddress>Strasse 1</CompanyAddress>
+ <Studiengang>Studiengang 1</Studiengang>
+ <RepresentativeID>1</RepresentativeID>
+ <Industry>Industry 1</Industry>
+ <NumberOfEmployees>1</NumberOfEmployees>
+ <Kammer>Kammer 1</Kammer>
+ <IsStudyPlanFull>1</IsStudyPlanFull>
+ <IsAlreadyPartner>1</IsAlreadyPartner>
+ <MonetaryContribution>1.1</MonetaryContribution>
+ </Entry>
+ <Entry>
+ <Method>UPDATE</Method>
+ <CompanyName>Name 2</CompanyName>
+ <CompanyAddress>Strasse 2</CompanyAddress>
+ <Studiengang>Studiengang 2</Studiengang>
+ <RepresentativeID>2</RepresentativeID>
+ <Industry>Industry 2</Industry>
+ <NumberOfEmployees>2</NumberOfEmployees>
+ <Kammer>Kammer 2</Kammer>
+ <IsStudyPlanFull>2</IsStudyPlanFull>
+ <IsAlreadyPartner>2</IsAlreadyPartner>
+ <MonetaryContribution>2.2</MonetaryContribution>
+ </Entry>
+</Document>

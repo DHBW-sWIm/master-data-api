@@ -17,6 +17,7 @@ router.get('/test', function (req, res) {
     testUserController.testFunction(req, res);
 });
 
+//router.get("/testAlex", auth); // authentication can simply be added by adding this line with the correct path in front of the real route
 router.get('/testAlex', function (req, res) {
     console.log("ROUTER GET /testAlex");
     testAlexController.test(req, res);
