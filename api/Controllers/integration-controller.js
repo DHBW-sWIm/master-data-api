@@ -1,4 +1,4 @@
-const DBService = require("../Services/vtiger-service");
+
 
 exports.syncToVTiger = function(data) {
     console.log("syncToVTiger Start");
