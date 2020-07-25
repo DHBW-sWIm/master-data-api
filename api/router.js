@@ -10,6 +10,7 @@ const testUserController = require("./test-user-controller");
 const testAlexController = require("./Controllers/test");
 const testTillmanController = require("./Controllers/test-tillman-controller");
 const testPhilippController = require("./Controllers/test-philipp-controller");
+const connectToVTigerAPI = require("./Controllers/callVTigerAPI-controller");
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api/test)
 router.get('/test', function (req, res) {
@@ -26,6 +27,11 @@ router.get('/testAlex', function (req, res) {
 router.get('/testTillman', function (req, res) {
     console.log('ROUTER GET /testTillman');
     testTillmanController.test(req, res)
+});
+
+router.get('/connectToVTigerAPI', function (req, res) {
+    console.log('ROUTER GET /connectToVTigerAPI');
+    connectToVTigerAPI.connectToVTigerAPI(req, res)
 });
 
 router.all('/camunda/*', function (req, res) {
