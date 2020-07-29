@@ -37,8 +37,9 @@ exports.connectToVTigerAPI = function(req, res) {
                     operation: "login",
                     username: "admin",
                     accessKey: "924850a694602c0e6c41f289625546cc"
-                })           
+                })
+            
+                })
             
         })
-            
-}
+};
