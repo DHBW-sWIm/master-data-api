@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<methodResponse>
+    <params>
+        <param>
+            <value>
+                <array>
+                    <data>
+                    <value>
+                            <string>UPDATE dg_company SET classification = "B" WHERE id  = 21;
+</string>
+                        </value>
+                        <value>
+                            <string>Check point 12
+</string>
+                        </value>
+                        <value>
+                            <string>UPDATE dg_company SET classification = "A" WHERE id  = 12;
+</string>
+                        </value>
+                        <value>
+                            <string>UPDATE dg_company SET classification = "B" WHERE id  = 2;
+</string>
+                        </value>
+                        <value>
+                            <string>Check point 13
+</string>
+                        </value>
+                        <value>
+                            <string>UPDATE dg_company SET classification = "A" WHERE id  = 55;
+</string>
+                        </value>
+                        <value>
+                            <string/>
+                        </value>
+                    </data>
+                </array>
+            </value>
+        </param>
+    </params>
+</methodResponse>
