@@ -39,7 +39,7 @@ exports.updateMoodleLog = async function(command){
       console.log("updateMoodleLog Start");
         var re = new RegExp('([0-9]+)');
         var checkPoint  = command.match(re)[0];
-        fs.writeFileSync('./Log/moodleLog', '' + checkPoint);
+        fs.writeFileSync('./Log/moodleLog.txt', '' + checkPoint);
         resolve("Updated MoodleLog");
       console.log("updateMoodleLog End");
     });
@@ -54,7 +54,7 @@ exports.getCurrentMoodleCheckpoint = async function(){
   console.log("getCurrentMoodleCheckpoint Start");
   try{
     return await new Promise(function(resolve, reject) {
-      var stream = fs.createReadStream('./Log/moodleLog');
+      var stream = fs.createReadStream('./Log/moodleLog.txt');
       stream = byline.createStream(stream);
 
       stream.on('data', function(line) {
@@ -72,7 +72,7 @@ exports.getCurrentVtigerCheckpoint = async function(){
   console.log("getCurrentVtigerCheckpoint Start");
   try{
     return await new Promise(function(resolve, reject) {
-      var stream = fs.createReadStream('./Log/vtigerLog');
+      var stream = fs.createReadStream('./Log/vtigerLog.txt');
       stream = byline.createStream(stream);
 
       stream.on('data', function(line) {
@@ -92,7 +92,7 @@ exports.updateVtigerLog = async function(command){
       console.log("updateVtigerLog Start");
         var re = new RegExp('([0-9]+)');
         var checkPoint  = command.match(re)[0];
-        fs.writeFileSync('./Log/vtigerLog', '' + checkPoint);
+        fs.writeFileSync('./Log/vtigerLog.txt', '' + checkPoint);
         resolve("Updated Vtiger Log");
       console.log("updateVtigerLog End");
     });
