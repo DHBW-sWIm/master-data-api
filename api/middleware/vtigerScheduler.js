@@ -3,15 +3,15 @@ var parser = require('xml2json');
 const integrationController = require("../Controllers/integration-controller");
 
 module.exports = async() => {
-    console.log("Integration mechanism start!");
+    console.log("Integration mechanism vtiger start!");
     try {
         // Get current Checkpoint as a parameter
-        var checkPoint = await integrationController.getCurrentMoodleCheckpoint();
-        console.log("Current MoodleLog Checkpoint " + checkPoint);
+        var checkPoint = await integrationController.getCurrentVtigerCheckpoint();
+        //console.log("Current VtigerLog Checkpoint " + checkPoint);
 
-        // Get the XML-Logfile from moodle service
+        // Get the XML-Logfile from vtigerService service
         //var data = callToWebservice(checkPoint);
-        fs.readFile( './testFromMoodle.xml', async function(err, data) {
+        fs.readFile( './testFromVTiger.xml', async function(err, data) {
 
             var jsonString = parser.toJson(data);
             // Parse it into entries into an array
@@ -33,11 +33,11 @@ module.exports = async() => {
                 command = "" + listOfCommands[i];
                 if (command != null && command != undefined){
                     // console.log(command);
-                    if (command[0] == "U"){
-                        await integrationController.syncToVTiger(command);
+                    if (command[0] == "U" || command[0] == "I" || command[0] == "D"){
+                        await integrationController.syncToMoodle(command);
                     } else{
                         if (command[0] == "C"){
-                            await integrationController.updateMoodleLog(command);
+                            await integrationController.updateVtigerLog(command);
                         } else {
                             console.log("Omittable");
                         }
@@ -48,9 +48,9 @@ module.exports = async() => {
             }
             
             // ### if no error occured, mark the updates as done? ###
-            console.log("Integration mechanism end!");
+            console.log("Integration mechanism vtiger end!");
          });
     } catch (error) {
-        console.log("Integration mechanism Fail! " + error);
+        console.log("Integration mechanism vtiger Fail! " + error);
     }
 }

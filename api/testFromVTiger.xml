@@ -1,29 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Document>
- <Entry>
- <Method>INSERT</Method>
- <CompanyName>Name 1</CompanyName>
- <CompanyAddress>Strasse 1</CompanyAddress>
- <Studiengang>Studiengang 1</Studiengang>
- <RepresentativeID>1</RepresentativeID>
- <Industry>Industry 1</Industry>
- <NumberOfEmployees>1</NumberOfEmployees>
- <Kammer>Kammer 1</Kammer>
- <IsStudyPlanFull>1</IsStudyPlanFull>
- <IsAlreadyPartner>1</IsAlreadyPartner>
- <MonetaryContribution>1.1</MonetaryContribution>
- </Entry>
- <Entry>
- <Method>UPDATE</Method>
- <CompanyName>Name 2</CompanyName>
- <CompanyAddress>Strasse 2</CompanyAddress>
- <Studiengang>Studiengang 2</Studiengang>
- <RepresentativeID>2</RepresentativeID>
- <Industry>Industry 2</Industry>
- <NumberOfEmployees>2</NumberOfEmployees>
- <Kammer>Kammer 2</Kammer>
- <IsStudyPlanFull>2</IsStudyPlanFull>
- <IsAlreadyPartner>2</IsAlreadyPartner>
- <MonetaryContribution>2.2</MonetaryContribution>
- </Entry>
-</Document>
+<?xml version="1.0" encoding="UTF-8"?>
+<methodResponse>
+    <params>
+        <param>
+            <value>
+                <array>
+                    <data>
+                        <value>
+                            <string>INSERT dg_company (company_name, classification) VALUES ('Netflix', 'B') ;
+</string>
+                        </value>
+                        <value>
+                            <string>DELETE dg_company WHERE company_name = 'DZ BANK' ;
+</string>
+                        </value>
+                        <value>
+                            <string>INSERT dg_company_representative (first_name, last_name,	email,	phone,	compnay_id) VALUES (Moaoia,Shatila,aa@qq.com,491779366666,2) ;
+</string>
+                        </value>
+                        <value>
+                            <string>UPDATE dg_company_representative OLDVALUES (Moaoia,Shatila,aa@qq.com,491779366666,2) NEWVALUES (update,update,update@qq.com,491779366666,2);
+</string>
+                        </value>
+                        <value>
+                            <string>DELETE FROM dg_company_representative  VALUES (Moaoia,Shatila,aa@qq.com,491779366666,2) ;</string>
+                        </value>
+                    </data>
+                </array>
+            </value>
+        </param>
+    </params>
+</methodResponse>
