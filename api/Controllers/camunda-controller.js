@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+// =============================================================================
 exports.test = async function test(req) {
 
     const path = req.url.split("/");
@@ -58,3 +59,4 @@ exports.test = async function test(req) {
         return response.data;
     }
 };
+// =============================================================================

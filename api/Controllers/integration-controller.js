@@ -2,56 +2,44 @@ const fs = require('fs');
 const byline = require('byline');
 const moodleService = require("../Services/moodle-service");
 
+// =============================================================================
+
 exports.syncToVTiger = async function(commandString) {
     return await new Promise(function(resolve, reject) {
-      console.log("syncToVTiger Start");
-      console.log(commandString);
       var re = new RegExp('([0-9]+)');
-      var id  = commandString.match(re)[0];
-      console.log(id); // company id
+      var id  = commandString.match(re)[0]; // company id
       re = new RegExp('"([AB])"');
-      var classification  = commandString.match(re)[0];
-      console.log(classification); //classification
+      var classification  = commandString.match(re)[0]; //classification
+
+      // ***** ENTER VTIGER-API-CALL WITH DATA HERE *****
+
       // ------------------------------------------------ //
       // ONLY FOR ASYNC TESTING
       setTimeout(function() {
         resolve("Updated Vtiger"); // After 1 seconds, resolve the promise with value "Updated Vtiger"
       }, 1000);
       // ------------------------------------------------ //
-
-      // possibly some corrections on the data
-  
-      // Call of the vtiger service // here we need the correct DBFunction for the company table
-      /*DBService.VTigerCompany(data, function(err) {
-          if (err) {
-              console.log("syncToVTiger error" + err);
-            } else {
-              console.log("syncToVTiger success");
-            }
-      });*/
-      console.log("syncToVTiger End");
     })
 }
+
+// =============================================================================
 
 exports.updateMoodleLog = async function(cc){
   try{
     return await new Promise(function(resolve, reject) {
-      console.log("updateMoodleLog Start");
-      //  var re = new RegExp('([0-9]+)');
         var checkPoint  = parseInt(cc) + 1;
         fs.writeFileSync('./Log/moodleLog.txt', '' + checkPoint);
         resolve("Updated MoodleLog");
-      console.log("updateMoodleLog End");
     });
-} catch (error){
-  console.log(error);
-  console.log("updateMoodleLog End");
-  return null;
-}
+  } catch (error){
+    console.log(error);
+    return null;
+  }
 }
 
+// =============================================================================
+
 exports.getCurrentMoodleCheckpoint = async function(){
-  console.log("getCurrentMoodleCheckpoint Start");
   try{
     return await new Promise(function(resolve, reject) {
       var stream = fs.createReadStream('./Log/moodleLog.txt');
@@ -63,13 +51,12 @@ exports.getCurrentMoodleCheckpoint = async function(){
     });;
   } catch (error){
     console.log(error);
-    console.log("getCurrentMoodleCheckpoint End");
     return null;
   }
 }
+// =============================================================================
 
 exports.getCurrentVtigerCheckpoint = async function(){
-  console.log("getCurrentVtigerCheckpoint Start");
   try{
     return await new Promise(function(resolve, reject) {
       var stream = fs.createReadStream('./Log/vtigerLog.txt');
@@ -81,37 +68,38 @@ exports.getCurrentVtigerCheckpoint = async function(){
     });;
   } catch (error){
     console.log(error);
-    console.log("getCurrentVtigerCheckpoint End");
     return null;
   }
 }
+
+// =============================================================================
 
 exports.updateVtigerLog = async function(command){
   try{
     return await new Promise(function(resolve, reject) {
-      console.log("updateVtigerLog Start");
         var re = new RegExp('([0-9]+)');
         var checkPoint  = command.match(re)[0];
         fs.writeFileSync('./Log/vtigerLog.txt', '' + checkPoint);
         resolve("Updated Vtiger Log");
-      console.log("updateVtigerLog End");
     });
   } catch (error){
     console.log(error);
-    console.log("updateVtigerLog End");
     return null;
   }
 }
 
+// =============================================================================
+
 exports.syncToMoodle = async function(commandString){
   return await new Promise(async function(resolve, reject) {
-    console.log("SyncToMoodle Start");
+    // Collect command and table from the sql-command
     var re = new RegExp('(INSERT)?(UPDATE)?(DELETE)?');
     var command  = commandString.match(re)[0];
 
     re = new RegExp('\\b(\\w*dg_company\\w*)\\b');
     var table  = commandString.match(re)[0];
 
+    // for each usecase combination of table and command, execute different functionalities
     var data = [];
     if (command == "INSERT" && table == "dg_company") {
       re = new RegExp("VALUES (.*)");
@@ -192,6 +180,7 @@ exports.syncToMoodle = async function(commandString){
     }
 
     reject("NOT A VALID COMMAND OR TABLE!")
-    console.log("SyncToMoodle End");
   })
 }
+
+// =============================================================================

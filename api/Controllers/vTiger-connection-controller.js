@@ -1,4 +1,4 @@
-// this code represents the general idea of calling the vtiger api and not a final version of the implementation
+// this code represents the general idea of calling the vtiger api and not a final version of the implementation --> should be moved to a service
 
 const http          = require("http");
 const crypto        = require('crypto');
@@ -6,6 +6,7 @@ const axios         = require('axios')
 const querystring    = require('querystring');
 const fsLib         = require('fs')
 
+// =============================================================================
 
 // get VTIGER URL from env variable, otherwise use the default value at localhost
 _VTIGER_URL_ = process.env.VTIGER_URL  || "http://localhost/vtigercrm/";
@@ -19,8 +20,9 @@ _VTIGER_USERNAME_ = process.env.VTIGER_USERNAME  || "admin";
 // get accessKey for specified user (in this case admin)
 _VTIGER_USER_ACCESSKEY_ = process.env.VTIGER_USER_ACCESSKEY || "I7f6HRz707Z6gaCy";
 
+// =============================================================================
 
-exports.connectToVTigerAPI = function(req, res) {
+exports.vtigerController = function(req, res) {
 
         http.get(_VTIGER_API_ENDPOINT_ + "?operation=getchallenge&username=" + _VTIGER_USERNAME_, (res) => {
             
@@ -35,8 +37,6 @@ exports.connectToVTigerAPI = function(req, res) {
                 tokenString = JSON.stringify(data.result.token);
                 token = tokenString.slice(1,tokenString.length-1);
 
-                console.log("Token: " + token)
-
                 authenticateToVTigerAPI(token);      
             
             })
@@ -44,13 +44,13 @@ exports.connectToVTigerAPI = function(req, res) {
         })
     }
 
-    function authenticateToVTigerAPI(token) {
+// =============================================================================
+
+function authenticateToVTigerAPI(token) {
         
         const accessKey = token + _VTIGER_USER_ACCESSKEY_;
 
         accessKeyHash = crypto.createHash('md5').update(accessKey).digest('hex')
-        
-        console.log(accessKeyHash);
 
         axios
             .post('http://localhost/vtigercrm/webservice.php', querystring.stringify({
@@ -59,8 +59,6 @@ exports.connectToVTigerAPI = function(req, res) {
                 accessKey: accessKeyHash
              }))
             .then(res => {
-                console.log(`statusCode: ${res.statusCode}`)
-                console.log(res.data)
                 sessionKey = res.data.result.sessionName;
                 writeSessionKey(sessionKey);
                 
@@ -69,6 +67,8 @@ exports.connectToVTigerAPI = function(req, res) {
                 console.error(error)
             })
     }
+
+    // =============================================================================
 
     function writeSessionKey(sessionKey){
 
