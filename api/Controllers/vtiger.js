@@ -1,8 +1,11 @@
+
 fs = require('fs');
 var parser = require('xml2json');
 const integrationController = require("../Controllers/integration-controller");
+const mdlController = require("../Services/moodle-service");
 
-module.exports = async() => {
+exports.test = async function(req, res) {
+
     console.log("Integration mechanism vtiger start!");
     try {
         // Get current Checkpoint as a parameter

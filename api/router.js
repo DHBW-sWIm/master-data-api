@@ -8,7 +8,8 @@ const auth = require("./middleware/authentication");
 // define the modules we need
 const testUserController = require("./test-user-controller");
 const testAlexController = require("./Controllers/test");
-const testTillmanController = require("./Controllers/test-tillman-controller");
+const testmdl = require("./Controllers/mdl");
+const testVtiger = require("./Controllers/vtiger");
 const testPhilippController = require("./Controllers/test-philipp-controller");
 const connectToVTigerAPI = require("./Controllers/callVTigerAPI-controller");
 
@@ -24,9 +25,13 @@ router.get('/testAlex', function (req, res) {
     testAlexController.test(req, res);
 });
 
-router.get('/testTillman', function (req, res) {
-    console.log('ROUTER GET /testTillman');
-    testTillmanController.test(req, res)
+router.get('/mdl', function (req, res) {
+    console.log('ROUTER GET /mdl');
+    testmdl.test(req, res)
+});
+router.get('/vtiger', function (req, res) {
+    console.log('ROUTER GET /vtiger');
+    testVtiger.test(req, res)
 });
 
 router.get('/connectToVTigerAPI', function (req, res) {

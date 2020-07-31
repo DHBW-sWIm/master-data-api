@@ -10,7 +10,7 @@
 </string>
                         </value>
                         <value>
-                            <string>DELETE dg_company WHERE company_name = 'DZ BANK' ;
+                            <string>DELETE dg_company WHERE company_name = 'IBM' ;
 </string>
                         </value>
                         <value>
@@ -18,11 +18,7 @@
 </string>
                         </value>
                         <value>
-                            <string>UPDATE dg_company_representative OLDVALUES (Moaoia,Shatila,aa@qq.com,491779366666,2) NEWVALUES (update,update,update@qq.com,491779366666,2);
-</string>
-                        </value>
-                        <value>
-                            <string>DELETE FROM dg_company_representative  VALUES (Moaoia,Shatila,aa@qq.com,491779366666,2) ;</string>
+                            <string>DELETE FROM dg_company_representative  VALUES (ToBe,Deleted,aa@qq.com,491779366666,2) ;</string>
                         </value>
                     </data>
                 </array>

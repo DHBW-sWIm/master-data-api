@@ -33,12 +33,12 @@ exports.syncToVTiger = async function(commandString) {
     })
 }
 
-exports.updateMoodleLog = async function(command){
+exports.updateMoodleLog = async function(cc){
   try{
     return await new Promise(function(resolve, reject) {
       console.log("updateMoodleLog Start");
-        var re = new RegExp('([0-9]+)');
-        var checkPoint  = command.match(re)[0];
+      //  var re = new RegExp('([0-9]+)');
+        var checkPoint  = parseInt(cc) + 1;
         fs.writeFileSync('./Log/moodleLog.txt', '' + checkPoint);
         resolve("Updated MoodleLog");
       console.log("updateMoodleLog End");
@@ -120,7 +120,7 @@ exports.syncToMoodle = async function(commandString){
       data.push(parts[1]);
       data.push(parts[3]);
 
-      await moodleService.insertCompany(data);
+      moodleService.insertCompany(data);
       resolve();
     }
 

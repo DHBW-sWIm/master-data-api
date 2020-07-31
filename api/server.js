@@ -29,9 +29,9 @@ console.log('Server started on port:' + port);
 // Start Schedulers
 // =============================================================================
 const sched1 = require("./middleware/moodleScheduler");
-// setInterval(sched1,integrationMechanismTimer);
+ //setInterval(sched1,integrationMechanismTimer);
 const sched2 = require("./middleware/vtigerScheduler");
-setInterval(sched2,integrationMechanismTimer);
+//setInterval(sched2,integrationMechanismTimer);
 
 //EXPORT MODULE
 module.exports = app;

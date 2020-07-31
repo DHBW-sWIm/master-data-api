@@ -1,9 +1,10 @@
 fs = require('fs');
 var parser = require('xml2json');
 const integrationController = require("../Controllers/integration-controller");
+//const mdlController = require("../Controllers/Moodle-controller");
 
 module.exports = async() => {
-    console.log("Integration mechanism moodle start!");
+     console.log("Integration mechanism moodle start!");
     try {
         // Get current Checkpoint as a parameter
         var checkPoint = await integrationController.getCurrentMoodleCheckpoint();
@@ -11,7 +12,8 @@ module.exports = async() => {
 
         // Get the XML-Logfile from moodle service
         //var data = callToWebservice(checkPoint);
-        fs.readFile( './testFromMoodle.xml', async function(err, data) {
+        var data =  await mdlController.get_mdl_log(checkPoint);
+        //fs.readFile( './testFromMoodle.xml', async function(err, data) {
 
             var jsonString = parser.toJson(data);
             // Parse it into entries into an array
@@ -33,11 +35,15 @@ module.exports = async() => {
                 command = "" + listOfCommands[i];
                 if (command != null && command != undefined){
                     // console.log(command);
-                    if (command[0] == "U"){
-                        await integrationController.syncToVTiger(command);
+                    if (command[22] == "U"){
+                        console.log("syncToVTiger Start");
+                        console.log("Call Vtiger API to update Company Classification ");
+                        console.log("syncToVTiger Start");
+                         //integrationController.syncToVTiger(command);
                     } else{
                         if (command[0] == "C"){
-                            await integrationController.updateMoodleLog(command);
+                            console.log("Check Point");
+                             //integrationController.updateMoodleLog(command);
                         } else {
                             console.log("Omittable");
                         }
@@ -49,7 +55,8 @@ module.exports = async() => {
             
             // ### if no error occured, mark the updates as done? ###
             console.log("Integration mechanism moodle end!");
-         });
+            integrationController.updateMoodleLog(checkPoint);
+         //});
     } catch (error) {
         console.log("Integration mechanism moodle Fail! " + error);
     }
